@@ -29,7 +29,7 @@ contract TxOriginTest is Test {
 
         // the owner is tricked into sending ETH to the malicious contract
         vm.prank(owner, owner);
-        (bool ok, ) = address(phishing).call{value: 1 ether}("");
+        (bool ok,) = address(phishing).call{value: 1 ether}("");
         assertTrue(ok);
 
         assertEq(address(wallet).balance, 0);
@@ -46,7 +46,7 @@ contract TxOriginTest is Test {
 
         vm.deal(owner, 1 ether);
         vm.prank(owner, owner);
-        (bool ok, ) = address(phishing2).call{value: 1 ether}("");
+        (bool ok,) = address(phishing2).call{value: 1 ether}("");
 
         assertFalse(ok);
         assertEq(address(secureWallet).balance, 10 ether);

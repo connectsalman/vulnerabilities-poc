@@ -11,7 +11,7 @@ contract VulnerableBank {
     function withdraw() public {
         uint256 amount = balances[msg.sender];
         require(amount > 0, "No balance");
-        (bool ok, ) = msg.sender.call{value: amount}("");
+        (bool ok,) = msg.sender.call{value: amount}("");
         require(ok, "Transfer failed");
         balances[msg.sender] = 0;
     }

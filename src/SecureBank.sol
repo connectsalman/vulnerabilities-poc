@@ -12,7 +12,7 @@ contract SecureBank {
         uint256 amount = balances[msg.sender];
         require(amount > 0, "No balance");
         balances[msg.sender] = 0;
-        (bool ok, ) = msg.sender.call{value: amount}("");
+        (bool ok,) = msg.sender.call{value: amount}("");
         require(ok, "Transfer failed");
     }
 }
